@@ -1,0 +1,26 @@
+{
+    "name": "HomePage-Recommender",
+    "version": "1.0",
+    "manifest_version" : 2,
+    "description": "HomePage Recommender",
+    "chrome_url_overrides": {
+        "newtab": "reco_page.html"
+    },
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": true
+    },
+    "browser_action": {
+        "default_popup": "do_not_track.html",
+        "default_icon": "icon.png"
+    },
+    "permissions": [
+        "https://*/*",
+        "http://*/*",
+        "tabs",
+        "history",
+        "http://54.180.142.66:5000/"
+    ]
+}
