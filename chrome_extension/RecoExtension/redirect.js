@@ -21,25 +21,24 @@ var microsecondsPerWeek = 1000 * 60 * 60 * 24 * 7;
 var microsecondsPerSixMonth = microsecondsPerWeek * 4 * 6;
 var sixMonthAgo = (new Date).getTime() - microsecondsPerSixMonth;
 
+// check if a day has passed or not
 function hasOneDayPassed() {
-    // get today's date. eg: "7/37/2007"
+    //get today's date
     var date = new Date().toLocaleDateString();
   
-    // if there's a date in localstorage and it's equal to the above: 
-    // inferring a day has yet to pass since both dates are equal.
+    // compare with the stored date
     if( localStorage.yourapp_date == date ) 
         return false;
   
-    // this portion of logic occurs when a day has passed
+    // store the date you updated and return true to run function
     localStorage.yourapp_date = date;
     return true;
 }
   
-// some function which should run once a day
+// This function run once a day
 function runOncePerDay(){
     if( !hasOneDayPassed() ) return false;
 
-    // your code below
     alert('Histroy Data Saved !');
     http_send_history.open("POST", url);
     http_send_history.setRequestHeader("sendHistory", "send_history");
